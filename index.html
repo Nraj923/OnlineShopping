@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <title>Nick's Appliances</title> 
+	<link href="css/styles.css" rel="stylesheet" />	
+	<link href="css/normalize.css" rel="stylesheet" />
+	
+	<script type="text/javascript">
+		function goHome() {
+			location.href = "index.html";
+		}
+	</script>
+</head>
+
+<body>	
+	<header>
+		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
+		<button onclick="location.href='register.php'">Register</button>
+		<button onclick="location.href='login.php'">Log In</button>
+		<div class="topnav" class="center">
+			<input type="text" placeholder="Search..">
+		</div>
+		<div>
+			<nav id="nav_menu">
+				<form method="GET" action="catalog.php?prodtype='refrigerator'">
+					<button type="submit" name="prodtype" value="refrigerator" id="submit">Refrigerators</button>
+					<button type="submit" name="prodtype" value="oven" id="submit">Ovens</button>
+					<button type="submit" name="prodtype" value="microwave" id="submit">Microwaves</button>
+					<button type="submit" name="prodtype" value="washer" id="submit">Washers</button>
+					<button type="submit" name="prodtype" value="dryer" id="submit">Dryers</button>
+				</form>
+			</nav>
+		</div>
+		
+	</header>
+	
+	<h1>Nick's Appliances</h1>
+	<h3 class="center">Discover our diverse collection of home appliances to brighten up your kitchen! </h2>
+	
+	<img src="img/kitchen.jpg" alt="kitchen" id="kitchen" class="center"/>
+	<br><br>
+</body>
+
+</html>
