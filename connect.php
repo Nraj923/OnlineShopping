@@ -1,6 +1,6 @@
 <?php 
 	$host = "nicksappliancesdb.mysql.database.azure.com";
-	$user = "mysqladmin";
+	$user = "mysqladmin@nicksappliancesdb";
 	$password = "Atlanta01$";
 	$db = "appliancedb";
 	$port = 3306;
