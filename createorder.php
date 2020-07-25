@@ -1,11 +1,7 @@
 <?php
 	session_start();
-	//var_dump($_POST);
-	//var_dump($_SESSION['cart']);
-	$con = new mysqli("localhost","root", "hailsham923", "appliancedb", 3308);
-	if (!$con) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+	require_once "connect.php";
+	
 	$name = $_POST['cardname'];
 	$cardnumber = (int) $_POST['cardno'];
 	$expdate = $_POST['expdate'];
@@ -21,25 +17,16 @@
 		$sql1 = "INSERT INTO `order` (Name, CardNumber, ExpDate, CCV, Street, City, State, Zip, Phone, Email)
 				VALUES ('$name', $cardnumber, '$expdate', $ccv, '$street', '$city', '$state', $zip, '$phone', '$email')";
 		
-		//$con->query($sql1);
-		$result1 = mysqli_query($con, $sql1);
-		//var_dump($result1);
-		if (!$result1) {
-			die('Invalid Order Query: ' . mysqli_error($con));
-		}
+		$result1 = mysqli_query($link, $sql1) or die(mysqli_error($link));
 		
-		$orderquery = mysqli_query($con, "SELECT Order_ID FROM `order` ORDER BY Order_ID DESC"); 
+		$orderquery = mysqli_query($link, "SELECT Order_ID FROM `order` ORDER BY Order_ID DESC") or die(mysqli_error($link)); 
 		$row = mysqli_fetch_array($orderquery);
 		$orderid = $row['Order_ID'];
 		foreach ($_SESSION['cart'] as $result) {
 			$price = $result[2];
 			$sql2 = "INSERT INTO `order_details` (Order_ID, Product_ID, Quantity, Description, Price)
 				VALUES ('$orderid', '$result[0]', '$result[3]', '$result[1]', $price)";
-			$result2 = mysqli_query($con, $sql2);
-			//var_dump($result2);
-			if (!$result2) {
-				die("Invalid Detail Query: " . mysqli_error($con));
-			}
+			$result2 = mysqli_query($link, $sql2) or die(mysqli_error($link));
 		}
 		session_destroy();
 	}

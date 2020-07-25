@@ -1,9 +1,6 @@
 <?php
 	session_start();
-	$con = new mysqli("localhost","root", "hailsham923", "appliancedb", 3308);
-	if (!$con) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+	require_once "connect.php";
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 		$firstname = $_POST['firstname'];
@@ -15,7 +12,7 @@
 		$sql = "INSERT INTO `customer` (First_Name, Last_Name, Email, Username, Password)
 				VALUES ('$firstname', '$lastname', '$email', '$username', '$password')";
 				
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($link, $sql) or die(mysqli_error($link));
 		if (!$result) {
 			die('Invalid Order Query: ' . mysqli_error($con));
 		}

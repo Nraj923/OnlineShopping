@@ -96,9 +96,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	<button type="submit" name="cart" class="checkout" onclick="location.href='checkout.php';">Checkout</button>
 	
 	<?php	
-		$con = new mysqli("localhost","root", "hailsham923", "appliancedb", 3308);
+		require_once "connect.php";
 		$productType = $_REQUEST['prodtype'];
-		$products = $con->query("SELECT * FROM `product` WHERE type='".$productType."'");
+		$sql = "SELECT * FROM `product` WHERE type='".$productType."'";
+		$products = mysqli_query($link, $sql) or die(mysqli_error($link));
 		$num = 1;
 		while($row = $products->fetch_array()){ 
 	?>

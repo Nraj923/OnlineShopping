@@ -1,10 +1,7 @@
 <?php
 	session_start();
 	$_SESSION['login'] = ""; 
-	$con = new mysqli("localhost","root", "hailsham923", "appliancedb", 3308);
-	if (!$con) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+	require_once "connect.php";
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 		$username = $_POST['username'];
@@ -13,11 +10,11 @@
 		$_SESSION['login'] = "This username doesn't exist";
 		
 		$sql1 = "SELECT Username FROM `customer`";
-		$result1 = mysqli_query($con, $sql1);
+		$result1 = mysqli_query($link, $sql1) or die(mysqli_error($link));
 		while ($row1 = $result1->fetch_array()) {
 			if ($row1['Username'] == $username) {
 				$sql2 = "SELECT Password FROM `customer` WHERE Username='$username'";
-				$result = mysqli_query($con, $sql2);
+				$result = mysqli_query($link, $sql2) or die(mysqli_error($link));
 				$row2 = $result->fetch_array();
 				if ($row2['Password'] == $password) {
 					header("Location: index.html");
