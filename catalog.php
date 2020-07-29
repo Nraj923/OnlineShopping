@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	</script>
 </head>
 
-<body>	
+<body class="page">	
 	<header>
 		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
 		<button onclick="location.href='register.php'">Register</button>
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		<div class="price"> Price: $<?php echo $_SESSION['totalprice'] ?> </div>
 		
 	</header>
-	<button type="submit" name="cart" class="checkout" onclick="location.href='checkout.php';">Checkout</button>
+	<button type="submit" name="cart" class="checkout" onclick="location.href='checkout.php';">Checkout</button><br><br>
 	
 	<?php	
 		require_once "connect.php";
@@ -109,9 +109,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 				<td><img src="img/<?php echo $row["Product_ID"]; ?>.jpg" class="prdimage"></td>
 				<td class="description"><?php echo $row["Description"]; ?><br>SKU: <?php echo $row["Product_ID"] ?></td>
 				<td>Item Price: $<?php echo $row["Price"] ?></td>
-				<td><input type="checkbox" name="delcharge"/> &nbsp <label for="delcharge">Delivery Charge: <?php echo $row["Delivery"] ?></label> &nbsp </td> 
-				<td><input type="checkbox" name="inscharge"/> &nbsp <label for="inscharge">Installation Charge: <?php echo $row["Installation"] ?></label> &nbsp </td> 
-				<td><input type="checkbox" name="haulaway"/> &nbsp <label for="haulaway">Haul-Away Charge: <?php echo $row["Haul_Away"] ?></label> &nbsp </td> 
+				<td><input type="checkbox" name="delcharge"/><label for="delcharge">Delivery Charge: <?php echo $row["Delivery"] ?></label></td> 
+				<td><input type="checkbox" name="inscharge"/><label for="inscharge">Installation Charge: <?php echo $row["Installation"] ?></label></td> 
+				<td><input type="checkbox" name="haulaway"/><label for="haulaway">Haul-Away Charge: <?php echo $row["Haul_Away"] ?></label></td> 
 				<td>
 					<form method="POST" action="">
 						<button type="submit" name="addtocart" id="addtocart" class="addtocart">Add to Cart</button>

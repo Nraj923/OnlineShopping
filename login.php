@@ -40,7 +40,7 @@
 		}
 	</script>
 </head>
-<body>
+<body class="page">
 	<header>
 		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
 		<button onclick="location.href='register.php'">Register</button>
@@ -63,8 +63,8 @@
 		</div>
 		
 	</header>
-	<h2>Log In</h2>
-	<form method="POST" action="">
+	<form method="POST" action="" class="fields">
+		<h2>Log In</h2>
 		<label for="username">Username</label>
 		<input type="text" id="username" name="username"/><br>
 		<label for="pass">Password</label>

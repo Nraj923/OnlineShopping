@@ -33,7 +33,7 @@
 		}
 	</script>
 </head>
-<body>
+<body class="page">
 	<header>
 		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
 		<button onclick="location.href='register.php'">Register</button>

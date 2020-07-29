@@ -29,7 +29,7 @@
 		}
 	</script>
 	</head>
-	<body>
+	<body class="page">
 		<header>
 			<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
 			<button onclick="location.href='register.php'">Register</button>
@@ -60,7 +60,7 @@
 		<table id="cartitems">
 			<tbody>
 				<tr>
-					<td   style="padding-right: 25px;"><img src="img/<?php echo $result[0] ?>.jpg" class="cartimage"></td>
+					<td style="padding-right: 25px;"><img src="img/<?php echo $result[0] ?>.jpg" class="cartimage"></td>
 					<td class="description" style="padding-right: 25px;"><?php echo $result[1]; ?><br>SKU: <?php echo $result[0] ?></td>
 					<td style="padding-right: 25px;">$<?php echo $result[2] ?> &nbsp </td>
 					<td style="padding-right: 25px;">Quantity: <?php echo $result[3] ?> &nbsp </td>
@@ -69,7 +69,7 @@
 							<input type="submit" class="remove" value="Remove Item"/>
 							<input type="hidden" name="pID" id="pID" value="<?php echo $result[0] ?>"/>
 						</form>
-					</td>	
+					</td><br>
 				</tr>
 			</tbody>
 		</table>
@@ -77,9 +77,9 @@
 			}
 		}
 		?>
-		<label>Final Price: $<?php echo $_SESSION['totalprice'] ?></label>
-		<h3>Payment Info</h3>
-		<form method="POST" action="createorder.php">
+		<label>&nbsp Final Price: $<?php echo $_SESSION['totalprice'] ?></label>
+		<form method="POST" action="createorder.php" class="fields">
+			<h3>Payment Info</h3>
 			<label for="cardno">Card Number</label>
 			<input type="number" id="cardno" name="cardno" required><br>
 			<label for="expdate">Expiration Date</label>

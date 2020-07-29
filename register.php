@@ -16,7 +16,7 @@
 		}
 	</script>
 </head>
-<body>
+<body class="page">
 	<header>
 		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
 		<button onclick="location.href='register.php'">Register</button>
@@ -39,8 +39,8 @@
 		</div>
 		
 	</header>
-	<h2>Register a New Account</h2>
-	<form method="POST" action="createaccount.php">
+	<form method="POST" action="createaccount.php" class="fields">
+		<h2>Register a New Account</h2>
 		<label for="firstname">First Name </label>
 		<input type="text" id="firstname" name="firstname"/><br>
 		<label for="lastname">Last Name </label>
