@@ -4,6 +4,22 @@ Nick's Appliances
 
 */
 
+table {
+}
+
+td {
+	width: 14.28%;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+p {
+    text-align: center;
+}	
+
 .center {
   display: block;
   margin-left: auto;
@@ -48,25 +64,21 @@ Nick's Appliances
 	float: right;
 }
 
-table {
-}
-
-td {
-	width: 14.28%;
-	text-align: center;
-}
-
-h1 {
-	text-align: center;
-}
-
-p {
-    text-align: center;
-}	
-
 .homebtn {
 	width: 200px;
 	height: 50px;
+}
+
+.page {
+	background-color: #e6ffff;
+}
+
+.fields {
+	margin: 20px;
+}
+
+.account {
+	background-color: lightgreen;
 }
 
 .#cartitems {
@@ -100,14 +112,6 @@ p {
 	width: 50px;
 }
 
-.page {
-	background-color: #e6ffff;
-}
-
-.fields {
-	margin: 20px;
-}
-
 input[type="button"] {
     float: right;
     display: block;
@@ -133,13 +137,11 @@ header img {
 	text-shadow: 2px 2px 2px blue;
 }
 
-/* Add a black background color to the top navigation bar */
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
 }
 
-/* Style the search box inside the navigation bar */
 .topnav input[type=text] {
  
   padding: 6px;
@@ -166,19 +168,16 @@ header img {
 
 * {box-sizing:border-box}
 
-/* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin-left: 350px;
 }
 
-/* Hide the images by default */
 .mySlides {
   display: none;
 }
 
-/* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -186,7 +185,7 @@ header img {
   width: auto;
   margin-top: -22px;
   padding: 16px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -194,18 +193,15 @@ header img {
   user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
-  right: 0;
+  right: 250px;
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Caption text */
 .text {
   color: #f2f2f2;
   font-size: 15px;
@@ -216,7 +212,6 @@ header img {
   text-align: center;
 }
 
-/* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
   font-size: 12px;
@@ -225,7 +220,6 @@ header img {
   top: 0;
 }
 
-/* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
   height: 15px;
@@ -241,7 +235,6 @@ header img {
   background-color: #717171;
 }
 
-/* Fading animation */
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
