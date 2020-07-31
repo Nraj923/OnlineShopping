@@ -1,20 +1,24 @@
 <?php
 	session_start();	
-	//var_dump($_POST);
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
+		// Removing item from cart
 		if (isset($_POST['pID'])) {
 			$i = 0;
 			foreach ($_SESSION['cart'] as $result) {
 				if ($result[0] == $_POST['pID']) {
+					$_SESSION['items'] -= $result[6];
+					$_SESSION['totalprice'] -= ($result[2] * $result[6]);
+					$_SESSION['totalprice'] -= ($result[3] + $result[4] + $result[5]);
 					array_splice($_SESSION['cart'], $i, 1);
-					$_SESSION['items'] -= $result[3];
-					$_SESSION['totalprice'] -= ($result[2] * $result[3]);
 				} 
 				$i = $i + 1;
 			}
 		}
 	}
-	//var_dump($_SESSION['cart']);
+	
+	if ($_SESSION['totalprice'] < 0.01) {
+		$_SESSION['totalprice'] = 0;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -27,14 +31,18 @@
 		function goHome() {
 			location.href = "index.html";
 		}
+		
+		function checkCart() {
+			location.href = "checkout.php";
+		}
 	</script>
 	</head>
 	<body class="page">
 		<header>
 			<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
-			<button onclick="location.href='register.php'">Register</button>
-			<button onclick="location.href='login.php'">Log In</button>
-			<input type="image" src="img/cart.png" id="cart" class="cart"/>
+			<button onclick="location.href='register.php'" class="account">Register</button>
+			<button onclick="location.href='login.php'" class="account">Log In</button>
+			<input type="image" src="img/cart.png" id="cart" class="cart" onclick="checkCart()"/>
 			<label id="cartnum" class="cartnum"><?php echo $_SESSION['items'] ?> items in </label/>
 			<div class="topnav" class="center">
 				<input type="text" placeholder="Search..">
@@ -62,8 +70,11 @@
 				<tr>
 					<td style="padding-right: 25px;"><img src="img/<?php echo $result[0] ?>.jpg" class="cartimage"></td>
 					<td class="description" style="padding-right: 25px;"><?php echo $result[1]; ?><br>SKU: <?php echo $result[0] ?></td>
-					<td style="padding-right: 25px;">$<?php echo $result[2] ?> &nbsp </td>
-					<td style="padding-right: 25px;">Quantity: <?php echo $result[3] ?> &nbsp </td>
+					<td style="padding-right: 25px;">Price: $<?php echo $result[2] ?> &nbsp </td>
+					<td style="padding-right: 25px;">Delivery Charge: $<?php echo $result[3] ?> &nbsp </td>
+					<td style="padding-right: 25px;">Installation Charge: $<?php echo $result[4] ?> &nbsp </td>
+					<td style="padding-right: 25px;">Haul-Away Charge: $<?php echo $result[5] ?> &nbsp </td>
+					<td style="padding-right: 25px;">Quantity: <?php echo $result[6] ?> &nbsp </td>
 					<td style="padding-right: 25px;">
 						<form method="POST" action="">
 							<input type="submit" class="remove" value="Remove Item"/>

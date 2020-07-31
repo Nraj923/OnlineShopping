@@ -23,9 +23,8 @@
 		$row = mysqli_fetch_array($orderquery);
 		$orderid = $row['Order_ID'];
 		foreach ($_SESSION['cart'] as $result) {
-			$price = $result[2];
-			$sql2 = "INSERT INTO `order_details` (Order_ID, Product_ID, Quantity, Description, Price)
-				VALUES ('$orderid', '$result[0]', '$result[3]', '$result[1]', $price)";
+			$sql2 = "INSERT INTO `order_details` (Order_ID, Product_ID, Quantity, Description, Price, DeliveryTotal, InstallationTotal, HaulAwayTotal)
+				VALUES ('$orderid', '$result[0]', '$result[6]', '$result[1]', '$result[2]', '$result[3]', '$result[4]', '$result[5]')";
 			$result2 = mysqli_query($link, $sql2) or die(mysqli_error($link));
 		}
 		session_destroy();
@@ -41,14 +40,18 @@
 		function goHome() {
 			location.href = "index.html";
 		}
+		
+		function checkCart() {
+			location.href = "checkout.php";
+		}
 	</script>
 </head>
 <body class="page">
 	<header>
 		<input type="image" src="img/logo3.png" id="homebtn" class="homebtn" onclick="goHome()">
-		<button onclick="location.href='register.php'">Register</button>
-		<button onclick="location.href='login.php'">Log In</button>
-		<input type="image" src="img/cart.png" id="cart" class="cart"/>
+		<button onclick="location.href='register.php'" class="account">Register</button>
+		<button onclick="location.href='login.php'" class="account">Log In</button>
+		<input type="image" src="img/cart.png" id="cart" class="cart" onclick="checkCart()"/>
 		<div class="topnav" class="center">
 			<input type="text" placeholder="Search..">
 		</div>
