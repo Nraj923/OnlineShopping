@@ -1,9 +1,9 @@
 <?php 
-	$host = "nicksappliancesdb.mysql.database.azure.com";
-	$user = "mysqladmin@nicksappliancesdb";
-	$password = "Atlanta01$";
+	$host = "localhost";
+	$user = "root";
+	$password = "password";
 	$db = "appliancedb";
-	$port = 3306;
+	$port = 3308;
 	
 	$link = mysqli_init();
 	$success = mysqli_real_connect(
